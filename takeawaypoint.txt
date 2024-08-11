@@ -1,0 +1,33 @@
+Frontend
+
+html => structure
+css => is used to beautify
+react => is used to deals with data
+
+
+Image= always place image in public folder
+    . in src of image tag always points the public folder
+
+
+
+Image =always place image in public folder
+    .in src of image tag always points the public folder
+
+
+Component:
+
+    component:
+        component are function whose first letter is always capital and it is called just like 
+        calling tag.<Home></Home>
+
+        component must return only one wrapper.
+        <></>=> it is called react fragment.
+
+        use {} (curly braces) to perform javascript 
+        operation inside tag(+,-,*,/, variable call, map, filter)
+
+
+        component are custom tag
+
+
+        
