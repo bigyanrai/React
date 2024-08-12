@@ -29,5 +29,19 @@ Component:
 
         component are custom tag
 
+Routing:
+    NavLink change the url
+    Route gives component based on url
+
+
+    localhost:3000/blog?name=bigya&age=22 => URL
+
+    anything before ? is called Route
+    anything after  ? is called Query String or Search String
+
+    Here blog is called route parameter and name, age is called query parameter
+
+    
+
 
         
