@@ -44,4 +44,9 @@ Routing:
     
 
 
-        
+Hooks:
+    useState()
+    useEffect()
+    useParam    =>  to get dynamic route parameter
+    useSearchParam()    =>  to get query parameter
+    userNavigate()  =>  to change path on click event

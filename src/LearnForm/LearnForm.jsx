@@ -1,7 +1,13 @@
 const LearnForm = () => {
+  let handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log("i am from component");
+  };
+
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="">Name :</label>
           <input type="text" />
