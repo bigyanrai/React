@@ -1,6 +1,7 @@
 import AppLink from "./appLink";
 import LearnExternalCss from "./LearnCss/LearnExternalCss";
 import LearnForm from "./LearnForm/LearnForm";
+import LearnForm1 from "./LearnForm/LearnForm1";
 import GetLocalStorage from "./LearnLocalStorage/GetLocalStorage";
 import RemoveLocalStorage from "./LearnLocalStorage/RemoveLocalStorage";
 import SetLocalStorage from "./LearnLocalStorage/SetLocalStorage";
@@ -14,6 +15,8 @@ import UseState4 from "./LearnUseState/UseState4";
 import UseState5 from "./LearnUseState/UseState5";
 import NestedRouting from "./NestedRouting/NestedRouting";
 import NestedRouting1 from "./NestedRouting/NestedRouting1";
+import LearnUseEffect from "./UseEffect/LearnUseEffect";
+import LearnUseEffect1 from "./UseEffect/LearnUseEffect1";
 
 const App = () => {
   return (
@@ -33,7 +36,10 @@ const App = () => {
       {/* <UseState2></UseState2> */}
       {/* <UseState3></UseState3> */}
       {/* <UseState4></UseState4> */}
-      <UseState5></UseState5>
+      {/* <UseState5></UseState5> */}
+      {/* <LearnUseEffect></LearnUseEffect> */}
+      {/* <LearnUseEffect1></LearnUseEffect1> */}
+      {<LearnForm1></LearnForm1>}
     </div>
   );
 };
