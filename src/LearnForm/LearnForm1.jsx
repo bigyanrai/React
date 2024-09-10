@@ -9,11 +9,40 @@ const LearnForm1 = () => {
   let [country, setCountry] = useState("Nepal");
   let [gender, setGender] = useState("male");
   let [isMarried, setIsMarried] = useState(false);
+  let genders = [
+    { label: "Male", value: "male" },
+    { label: "Female", value: "female" },
+    { label: "Other", value: "other" },
+  ];
+  let countries = [
+    { label: "Nepal", value: "Nepal" },
+    { label: "China", value: "china" },
+    { label: "USA", value: "usa" },
+    { label: "Europe", value: "europe" },
+  ];
+
   let [description, setDescription] = useState("");
 
   return (
     <div>
-      <form action="">
+      <form
+        action=""
+        onSubmit={(e) => {
+          e.preventDefault();
+          let data = {
+            fullName: fullName,
+            email: email,
+            password,
+            address,
+            age,
+            country,
+            gender,
+            isMarried,
+            description,
+          };
+          console.log(data);
+        }}
+      >
         <div>
           <label htmlFor="fullName">FullName : </label>
           <input
@@ -21,8 +50,8 @@ const LearnForm1 = () => {
             name="fullName"
             id="fullName"
             value={fullName}
-            onChange={() => {
-              setFullName;
+            onChange={(e) => {
+              setFullName(e.target.value);
             }}
           />
         </div>
@@ -33,8 +62,8 @@ const LearnForm1 = () => {
             name="email"
             id="email"
             value={email}
-            onChange={() => {
-              setEmail;
+            onChange={(e) => {
+              setEmail(e.target.value);
             }}
           />
         </div>
@@ -45,8 +74,8 @@ const LearnForm1 = () => {
             name="password"
             id="password"
             value={password}
-            onChange={() => {
-              setPassword;
+            onChange={(e) => {
+              setPassword(e.target.value);
             }}
           />
         </div>
@@ -57,8 +86,8 @@ const LearnForm1 = () => {
             name="address"
             id="address"
             value={address}
-            onChange={() => {
-              setAddress;
+            onChange={(e) => {
+              setAddress(e.target.value);
             }}
           />
         </div>
@@ -69,29 +98,58 @@ const LearnForm1 = () => {
             name="age"
             id="age"
             value={age}
-            onChange={() => {
-              setAge;
+            onChange={(e) => {
+              setAge(e.target.value);
             }}
           />
         </div>
         <div>
-          <label htmlFor="country">Country : </label>
-          <select name="" id="country">
-            <option value="Nepal">Nepal</option>
-            <option value="China">China</option>
-            <option value="UK">UK</option>
+          <label>Country : </label>
+          <select
+            value={country}
+            onChange={(e) => {
+              setCountry(e.target.value);
+            }}
+          >
+            {countries.map((v, i) => {
+              return (
+                <option key={i} value={v.value}>
+                  {v.label}
+                </option>
+              );
+            })}
           </select>
         </div>
         <div>
           <label htmlFor="gender">Gender : </label>
-          <label htmlFor="male">Male </label>
-          <input type="radio" name="gender" value={"male"} />
-          <label htmlFor="female">Female </label>
-          <input type="radio" name="gender" value={"female"} />
+          {genders.map((item, i) => {
+            return (
+              <span key={i}>
+                <label htmlFor="{item.value}">{item.label}</label>
+                <input
+                  type="radio"
+                  id={item.value}
+                  value={item.value}
+                  checked={gender === item.value}
+                  onChange={(e) => {
+                    setGender(e.target.value);
+                  }}
+                />
+              </span>
+            );
+          })}
         </div>
         <div>
           <label htmlFor="isMarried">IsMarried : </label>
-          <input type="checkbox" name="isMarried" id="isMarried" />
+          <input
+            type="checkbox"
+            name="isMarried"
+            id="isMarried"
+            checked={isMarried === true}
+            onChange={(e) => {
+              setIsMarried(e.target.checked);
+            }}
+          />
         </div>
         <div>
           <label htmlFor="description">Description : </label>
@@ -100,8 +158,8 @@ const LearnForm1 = () => {
             name="description"
             id="description"
             value={description}
-            onChange={() => {
-              setDescription;
+            onChange={(e) => {
+              setDescription(e.target.value);
             }}
           />
         </div>

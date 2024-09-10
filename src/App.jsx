@@ -1,3 +1,4 @@
+import { createContext, useState } from "react";
 import AppLink from "./appLink";
 import LearnExternalCss from "./LearnCss/LearnExternalCss";
 import LearnForm from "./LearnForm/LearnForm";
@@ -15,10 +16,15 @@ import UseState4 from "./LearnUseState/UseState4";
 import UseState5 from "./LearnUseState/UseState5";
 import NestedRouting from "./NestedRouting/NestedRouting";
 import NestedRouting1 from "./NestedRouting/NestedRouting1";
+import Parent from "./PropDrilling/Parent";
 import LearnUseEffect from "./UseEffect/LearnUseEffect";
 import LearnUseEffect1 from "./UseEffect/LearnUseEffect1";
+import GreatGrandChild from "./PropDrilling/GreatGrandChild";
+
+export let Context = createContext();
 
 const App = () => {
+  let [name, setName] = useState("ram");
   return (
     <div>
       {/* <AppLink></AppLink> */}
@@ -39,7 +45,11 @@ const App = () => {
       {/* <UseState5></UseState5> */}
       {/* <LearnUseEffect></LearnUseEffect> */}
       {/* <LearnUseEffect1></LearnUseEffect1> */}
-      {<LearnForm1></LearnForm1>}
+      {/* {<LearnForm1></LearnForm1>} */}
+      <Context.Provider value={{ name, setName }}>
+        {/* <GreatGrandChild value={name}></GreatGrandChild> */}
+        <Parent />
+      </Context.Provider>
     </div>
   );
 };
