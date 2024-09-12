@@ -2,6 +2,7 @@ import { Outlet, Route, Routes } from "react-router-dom";
 import Navbar from "./Project/Navbar";
 import Footer from "./Project/Footer";
 import CreateProduct from "./Project/CreateProduct";
+import ReadAllProduct from "./Project/ReadAllProduct";
 
 const Project = () => {
   return (
@@ -26,7 +27,14 @@ const Project = () => {
               </div>
             }
           >
-            <Route index element={<div>Give all products</div>}></Route>
+            <Route
+              index
+              element={
+                <div>
+                  <ReadAllProduct />
+                </div>
+              }
+            ></Route>
             <Route
               path="create"
               element={

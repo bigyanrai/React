@@ -58,6 +58,13 @@ const CreateProduct = () => {
         data,
       });
       console.log(result);
+      setName("");
+      setQuantity(0);
+      setPrice(0);
+      setFeature(false);
+      setManufactureDate("");
+      setCompany("");
+      setProductImage("");
     } catch (error) {}
   };
 
