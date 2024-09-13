@@ -3,6 +3,8 @@ import Navbar from "./Project/Navbar";
 import Footer from "./Project/Footer";
 import CreateProduct from "./Project/CreateProduct";
 import ReadAllProduct from "./Project/ReadAllProduct";
+import SpecificProduct from "./Project/SpecificProduct";
+import UpdateProduct from "./Project/UpdateProduct";
 
 const Project = () => {
   return (
@@ -43,7 +45,14 @@ const Project = () => {
                 </div>
               }
             ></Route>
-            <Route path=":id" element={<div>Product details page</div>}></Route>
+            <Route
+              path=":id"
+              element={
+                <div>
+                  <SpecificProduct />
+                </div>
+              }
+            ></Route>
             <Route
               path="update"
               element={
@@ -55,7 +64,11 @@ const Project = () => {
               <Route index element={<div>update</div>}></Route>
               <Route
                 path=":id"
-                element={<div>Update specific product</div>}
+                element={
+                  <div>
+                    <UpdateProduct />
+                  </div>
+                }
               ></Route>
             </Route>
           </Route>

@@ -1,9 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const ReadAllProduct = () => {
   let [product, setProduct] = useState([]);
+  let navigate = useNavigate();
 
   let getData = async () => {
     try {
@@ -62,8 +64,22 @@ const ReadAllProduct = () => {
               <div>Product price is :{value.price}</div>
               <div>Product company is :{value.company}</div>
               <div>Product feature is :{value.feature ? "true" : "false"}</div>
-              <button style={{ margin: "5px", cursor: "pointer" }}>View</button>
-              <button style={{ margin: "5px", cursor: "pointer" }}>Edit</button>
+              <button
+                style={{ margin: "5px", cursor: "pointer" }}
+                onClick={() => {
+                  navigate(`/products/${value._id}`);
+                }}
+              >
+                View
+              </button>
+              <button
+                style={{ margin: "5px", cursor: "pointer" }}
+                onClick={() => {
+                  navigate(`/products/update/${value._id}`);
+                }}
+              >
+                Edit
+              </button>
               <button
                 onClick={() => {
                   sweetAlert(value._id);
