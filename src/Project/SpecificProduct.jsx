@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { HitAPI } from "../Services/HitAPI";
 
 const SpecificProduct = () => {
   let [product, setProduct] = useState({});
@@ -9,8 +10,8 @@ const SpecificProduct = () => {
   const getData = async () => {
     try {
       //   console.log(params.id);
-      let result = await axios({
-        url: `http://localhost:3000/product/${params.id}`,
+      let result = await HitAPI({
+        url: `/product/${params.id}`,
         method: `GET`,
       });
       setProduct(result.data.data);
@@ -23,10 +24,10 @@ const SpecificProduct = () => {
   function getYearMonthDay(dateString) {
     const date = new Date(dateString);
     const year = date.getUTCFullYear();
-    const month = date.getUTCMonth() + 1; // Months are zero-indexed, so add 1
-    const day = date.getUTCDate();
+    const month = String(date.getUTCMonth() + 1).padStart(2, "0"); // Ensure two digits
+    const day = String(date.getUTCDate()).padStart(2, "0"); // Ensure two digits
 
-    return `${year}/${month}/${day}`;
+    return `${year}-${month}-${day}`; // Format to yyyy-MM-dd
   }
   return (
     <div>

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { HitAPI } from "../Services/HitAPI";
 
 const ReadAllProduct = () => {
   let [product, setProduct] = useState([]);
@@ -9,8 +10,8 @@ const ReadAllProduct = () => {
 
   let getData = async () => {
     try {
-      let result = await axios({
-        url: `http://localhost:3000/product`,
+      let result = await HitAPI({
+        url: `/product`,
         method: `get`,
       });
       console.log(result.data.data);
@@ -23,8 +24,8 @@ const ReadAllProduct = () => {
 
   const handleDelete = async (id) => {
     try {
-      let result = await axios({
-        url: `http://localhost:3000/product/${id}`,
+      let result = await HitAPI({
+        url: `/product/${id}`,
         method: "delete",
       });
       console.log(result);
