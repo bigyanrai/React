@@ -5,8 +5,27 @@ import CreateProduct from "./Project/CreateProduct";
 import ReadAllProduct from "./Project/ReadAllProduct";
 import SpecificProduct from "./Project/SpecificProduct";
 import UpdateProduct from "./Project/UpdateProduct";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  changeCompany,
+  changePrice,
+  changeProductName,
+  changequantity,
+} from "./Redux/productSlice";
+import ReadAllProductUsingRtk from "./Project/ReadAllProductUsingRtk";
+// import { changeAge, changeName } from "./Redux/infoSlice";
 
 const Project = () => {
+  // let infoData = useSelector((state) => {
+  //   return state.info;
+  // });
+
+  let productData = useSelector((state) => {
+    return state.product;
+  });
+
+  let dispatch = useDispatch();
+
   return (
     <div>
       <Routes>
@@ -33,10 +52,18 @@ const Project = () => {
               index
               element={
                 <div>
-                  <ReadAllProduct />
+                  <ReadAllProductUsingRtk />
                 </div>
               }
             ></Route>
+            {/* <Route
+              index
+              element={
+                <div>
+                  <ReadAllProduct />
+                </div>
+              }
+            ></Route> */}
             <Route
               path="create"
               element={
@@ -74,6 +101,57 @@ const Project = () => {
           </Route>
         </Route>
       </Routes>
+      {/* <div>{infoData.name}</div>
+      <div>{infoData.age}</div>
+      {/* {console.log(typeof dispatch)} */}
+      {/* <button
+        onClick={() => {
+          dispatch(changeName("Bigyan"));
+        }}
+      >
+        Name
+      </button>
+      <button
+        onClick={() => {
+          dispatch(changeAge(30));
+        }}
+      >
+        age
+      </button>  */}
+      <br />
+      <hr />
+      <div>{productData.productName}</div>
+      <div>{productData.price}</div>
+      <div>{productData.quantity}</div>
+      <div>{productData.company}</div>
+      <button
+        onClick={() => {
+          dispatch(changeProductName("bigyan"));
+        }}
+      >
+        ProductName
+      </button>
+      <button
+        onClick={() => {
+          dispatch(changePrice(200));
+        }}
+      >
+        price
+      </button>
+      <button
+        onClick={() => {
+          dispatch(changequantity(2));
+        }}
+      >
+        quanttity
+      </button>
+      <button
+        onClick={() => {
+          dispatch(changeCompany("Apple"));
+        }}
+      >
+        quanttity
+      </button>
     </div>
   );
 };

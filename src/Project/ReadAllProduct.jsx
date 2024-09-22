@@ -47,6 +47,18 @@ const ReadAllProduct = () => {
       }
     });
   };
+
+  let handleOperation = (id, operation) => {
+    if (operation === "view")
+      return () => {
+        navigate(`/products/${id}`);
+      };
+    if (operation === "update")
+      return () => {
+        navigate(`/products/update/${id}`);
+      };
+  };
+
   return (
     <>
       <div>
@@ -67,17 +79,13 @@ const ReadAllProduct = () => {
               <div>Product feature is :{value.feature ? "true" : "false"}</div>
               <button
                 style={{ margin: "5px", cursor: "pointer" }}
-                onClick={() => {
-                  navigate(`/products/${value._id}`);
-                }}
+                onClick={handleOperation(value._id, "delete")}
               >
                 View
               </button>
               <button
                 style={{ margin: "5px", cursor: "pointer" }}
-                onClick={() => {
-                  navigate(`/products/update/${value._id}`);
-                }}
+                onClick={handleOperation(value._id, "update")}
               >
                 Edit
               </button>
