@@ -93,7 +93,19 @@ export const productApi = createApi({
           body: body,
         };
       },
+      invalidatesTags: ["readProduct"],
     }),
+
+    updateProduct: builder.mutation({
+      query: (info) => {
+        return {
+          url: `/product/${info.id}`,
+          method: "PATCH",
+          body: `${info.body}`,
+        };
+      },
+    }),
+    invalidatesTags: ["readProduct", "readProductById"],
   }),
 });
 

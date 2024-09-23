@@ -10,6 +10,7 @@ const ProductForm = ({
   buttonName = "",
   onSubmit = () => {},
   product = "",
+  isLoading = false,
 }) => {
   let [name, setName] = useState(product?.name || "");
   let [quantity, setQuantity] = useState(product?.quantity || 0);
@@ -212,7 +213,7 @@ const ProductForm = ({
           </select>
         </div>
         <br />
-        <button>{buttonName}</button>
+        <button>{isLoading ? buttonName : "Creating......"}</button>
       </form>
     </div>
   );

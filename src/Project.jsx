@@ -1,18 +1,17 @@
-import { Outlet, Route, Routes } from "react-router-dom";
-import Navbar from "./Project/Navbar";
-import Footer from "./Project/Footer";
-import CreateProduct from "./Project/CreateProduct";
-import ReadAllProduct from "./Project/ReadAllProduct";
-import SpecificProduct from "./Project/SpecificProduct";
-import UpdateProduct from "./Project/UpdateProduct";
 import { useDispatch, useSelector } from "react-redux";
+import { Outlet, Route, Routes } from "react-router-dom";
+import CreateProductUsingRtk from "./Project/CreateProductUsingRtk";
+import Footer from "./Project/Footer";
+import Navbar from "./Project/Navbar";
+import ReadAllProductUsingRtk from "./Project/ReadAllProductUsingRtk";
+import ReadSpecificProductUsingRtk from "./Project/ReadSpecificProductUsingRtk";
+import UpdateProduct from "./Project/UpdateProduct";
 import {
   changeCompany,
   changePrice,
   changeProductName,
   changequantity,
 } from "./Redux/productSlice";
-import ReadAllProductUsingRtk from "./Project/ReadAllProductUsingRtk";
 // import { changeAge, changeName } from "./Redux/infoSlice";
 
 const Project = () => {
@@ -68,18 +67,34 @@ const Project = () => {
               path="create"
               element={
                 <div>
-                  <CreateProduct />
+                  <CreateProductUsingRtk />
                 </div>
               }
             ></Route>
+            {/* <Route
+              path="create"
+              element={
+                <div>
+                  <CreateProduct />
+                </div>
+              }
+            ></Route> */}
             <Route
+              path=":id"
+              element={
+                <div>
+                  <ReadSpecificProductUsingRtk />
+                </div>
+              }
+            ></Route>
+            {/* <Route
               path=":id"
               element={
                 <div>
                   <SpecificProduct />
                 </div>
               }
-            ></Route>
+            ></Route> */}
             <Route
               path="update"
               element={
@@ -118,9 +133,10 @@ const Project = () => {
       >
         age
       </button>  */}
+
       <br />
       <hr />
-      <div>{productData.productName}</div>
+      {/* <div>{productData.productName}</div>
       <div>{productData.price}</div>
       <div>{productData.quantity}</div>
       <div>{productData.company}</div>
@@ -151,7 +167,7 @@ const Project = () => {
         }}
       >
         quanttity
-      </button>
+      </button> */}
     </div>
   );
 };

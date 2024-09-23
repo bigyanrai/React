@@ -35,32 +35,11 @@ const ReadAllProductUsingRtk = () => {
     if (isReadProductError) console.log(isReadProducterror.error);
   }, [isReadProductError, isReadProducterror]);
 
-  let navigate = useNavigate();
+  useEffect(() => {
+    if (isProductDeleteError) console.log(productDeleteerror.error);
+  }, [isProductDeleteError, productDeleteerror]);
 
-  const handleDelete = async (id) => {
-    try {
-      let result = await HitAPI({
-        url: `/product/${id}`,
-        method: "delete",
-      });
-      console.log(result);
-    } catch (error) {}
-  };
-  const sweetAlert = (_id) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed === true) {
-        handleDelete(_id);
-      }
-    });
-  };
+  let navigate = useNavigate();
 
   let handleOperation = (id, operation) => {
     if (operation === "view")
@@ -101,7 +80,7 @@ const ReadAllProductUsingRtk = () => {
                 </div>
                 <button
                   style={{ margin: "5px", cursor: "pointer" }}
-                  onClick={handleOperation(value._id, "delete")}
+                  onClick={handleOperation(value._id, "view")}
                 >
                   View
                 </button>
@@ -117,7 +96,7 @@ const ReadAllProductUsingRtk = () => {
                   }}
                   style={{ margin: "5px", cursor: "pointer" }}
                 >
-                  Delete
+                  {isProductDeleteLoading ? "deleting..." : "delete Product"}
                 </button>
                 <br />
                 <hr />
